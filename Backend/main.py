@@ -65,10 +65,13 @@ app = FastAPI(
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
+        # Desarrollo local
         "http://localhost:3000",  # Frontend React (Vite)
         "http://localhost:5173",  # Vite alternativo
         "http://localhost:8000",  # Mismo servidor
-        "*",  # TODO: Restringir en producción
+        # Producción Cloud Run
+        "https://fotovoltaica-frontend-892407171632.us-central1.run.app",  # Frontend producción
+        "https://fotovoltaica-892407171632.us-central1.run.app",  # Backend producción
     ],
     allow_credentials=True,
     allow_methods=["*"],
