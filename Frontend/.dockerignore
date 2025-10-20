@@ -49,7 +49,7 @@ cloudbuild.yaml
 # Dockerfiles
 Dockerfile
 .dockerignore
-nginx.conf
+# nginx.conf - NECESARIO para el build, NO excluir
 
 # Misc
 *.log
