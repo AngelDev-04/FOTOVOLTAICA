@@ -14,9 +14,8 @@ steps:
       - '--build-arg'
       - 'VITE_API_URL=${_VITE_API_URL}'
       - '-f'
-      - 'Dockerfile'
-      - '.'
-    dir: 'Frontend'
+      - 'Frontend/Dockerfile'
+      - 'Frontend'
 
   # Step 2: Push image to Container Registry
   - name: 'gcr.io/cloud-builders/docker'
