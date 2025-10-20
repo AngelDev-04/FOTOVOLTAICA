@@ -1,0 +1,72 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.venv/
+ENV/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+.hypothesis/
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Data files (no subir CSVs grandes)
+*.csv
+*.xlsx
+*.xls
+data/
+uploads/
+
+# Git
+.git/
+.gitignore
+.gitattributes
+
+# Documentation
+README.md
+README_COMPLETO.md
+docs/
+
+# CI/CD
+.github/
+cloudbuild.yaml
+
+# Dockerfiles (no incluir en build)
+Dockerfile
+.dockerignore

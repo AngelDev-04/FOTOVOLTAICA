@@ -1,0 +1,87 @@
+# ============================================================================
+# BACKEND - REQUIREMENTS.txt
+# Sistema de Análisis Energético - Proyecto Fotovoltaico
+# Python 3.11+
+# ============================================================================
+
+# ============================================================================
+# CORE FRAMEWORK
+# ============================================================================
+fastapi==0.115.5          # Framework web moderno y rápido
+uvicorn[standard]==0.32.1 # Servidor ASGI para FastAPI
+pydantic==2.10.3          # Validación de datos y serialización
+pydantic-settings==2.6.1  # Gestión de configuración y variables de entorno
+
+# ============================================================================
+# DATA PROCESSING
+# ============================================================================
+pandas==2.2.3             # Procesamiento y análisis de datos tabulares
+numpy==2.2.1              # Operaciones numéricas y arrays
+openpyxl==3.1.5           # Lectura/escritura de archivos Excel (.xlsx)
+xlrd==2.0.1               # Lectura de archivos Excel antiguos (.xls)
+
+# ============================================================================
+# FILE HANDLING
+# ============================================================================
+python-multipart==0.0.17  # Manejo de archivos multipart/form-data (upload)
+aiofiles==24.1.0          # Lectura/escritura asíncrona de archivos
+
+# ============================================================================
+# EXPORT & REPORTS
+# ============================================================================
+matplotlib==3.9.3         # Generación de gráficos para exportar
+reportlab==4.2.5          # Generación de PDFs
+pillow==11.0.0            # Manipulación de imágenes (para gráficos)
+
+# ============================================================================
+# DATE & TIME
+# ============================================================================
+python-dateutil==2.9.0.post0  # Parseo y manipulación de fechas
+
+# ============================================================================
+# VALIDATION & UTILITIES
+# ============================================================================
+email-validator==2.2.0    # Validación de emails (si se requiere auth)
+python-jose[cryptography]==3.3.0  # JWT tokens (si se requiere auth)
+passlib[bcrypt]==1.7.4    # Hashing de passwords (si se requiere auth)
+
+# ============================================================================
+# CORS & SECURITY
+# ============================================================================
+python-dotenv==1.0.1      # Carga de variables de entorno desde .env
+
+# ============================================================================
+# TESTING (opcional pero recomendado)
+# ============================================================================
+pytest==8.3.4             # Framework de testing
+pytest-asyncio==0.24.0    # Testing para código asíncrono
+httpx==0.28.1             # Cliente HTTP para tests (reemplazo de requests)
+pytest-cov==6.0.0         # Cobertura de tests
+
+# ============================================================================
+# DEVELOPMENT (opcional)
+# ============================================================================
+black==24.10.0            # Formateador de código
+flake8==7.1.1             # Linter
+mypy==1.13.0              # Type checker
+isort==5.13.2             # Ordenamiento de imports
+
+# ============================================================================
+# DEPLOYMENT
+# ============================================================================
+gunicorn==23.0.0          # Servidor WSGI para producción (alternativa a uvicorn)
+
+# ============================================================================
+# NOTAS:
+# ============================================================================
+# Para instalar:
+#   pip install -r requirements.txt
+#
+# Para instalar solo producción (sin dev dependencies):
+#   pip install -r requirements.txt --no-deps
+#
+# Para generar requirements.txt actualizado:
+#   pip freeze > requirements.txt
+#
+# Para Cloud Run, asegúrate de tener Python 3.11+ en el Dockerfile
+# ============================================================================

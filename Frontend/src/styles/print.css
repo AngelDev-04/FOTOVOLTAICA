@@ -1,0 +1,181 @@
+/**
+ * Estilos de impresión para generar PDF correctamente
+ * Convierte colores oklch a valores sólidos RGB
+ */
+
+@media print {
+  /* Ocultar elementos que no deben aparecer en el PDF */
+  .no-print,
+  button,
+  [role="button"],
+  nav,
+  .sidebar {
+    display: none !important;
+  }
+
+  /* Asegurar que el contenido ocupe todo el ancho */
+  body,
+  html {
+    width: 100% !important;
+    height: auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: visible !important;
+  }
+
+  /* Forzar colores de fondo para impresión */
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    color-adjust: exact !important;
+  }
+
+  /* Reemplazar colores oklch con RGB sólidos */
+
+  /* Backgrounds oscuros */
+  .dark .bg-slate-950,
+  .dark [class*="bg-slate-9"] {
+    background-color: #020617 !important;
+  }
+
+  .dark .bg-slate-900,
+  .dark [class*="bg-slate-8"] {
+    background-color: #0f172a !important;
+  }
+
+  .dark .bg-slate-800 {
+    background-color: #1e293b !important;
+  }
+
+  .dark .bg-slate-700 {
+    background-color: #334155 !important;
+  }
+
+  /* Backgrounds claros */
+  .bg-slate-50,
+  [class*="bg-slate-5"] {
+    background-color: #f8fafc !important;
+  }
+
+  .bg-slate-100 {
+    background-color: #f1f5f9 !important;
+  }
+
+  .bg-slate-200 {
+    background-color: #e2e8f0 !important;
+  }
+
+  .bg-white {
+    background-color: #ffffff !important;
+  }
+
+  /* Text colors */
+  .dark .text-white {
+    color: #ffffff !important;
+  }
+
+  .dark .text-slate-200 {
+    color: #e2e8f0 !important;
+  }
+
+  .dark .text-slate-300 {
+    color: #cbd5e1 !important;
+  }
+
+  .dark .text-slate-400 {
+    color: #94a3b8 !important;
+  }
+
+  .text-slate-900 {
+    color: #0f172a !important;
+  }
+
+  .text-slate-600 {
+    color: #475569 !important;
+  }
+
+  /* Amber colors */
+  .bg-amber-400 {
+    background-color: #fbbf24 !important;
+  }
+
+  .bg-amber-500 {
+    background-color: #f59e0b !important;
+  }
+
+  .text-amber-500 {
+    color: #f59e0b !important;
+  }
+
+  .text-amber-600 {
+    color: #d97706 !important;
+  }
+
+  /* Blue colors */
+  .bg-blue-500 {
+    background-color: #3b82f6 !important;
+  }
+
+  .text-blue-500 {
+    color: #3b82f6 !important;
+  }
+
+  .text-blue-600 {
+    color: #2563eb !important;
+  }
+
+  /* Green colors */
+  .bg-green-400 {
+    background-color: #4ade80 !important;
+  }
+
+  .bg-green-500 {
+    background-color: #22c55e !important;
+  }
+
+  .text-green-600 {
+    color: #16a34a !important;
+  }
+
+  /* Purple colors */
+  .bg-purple-500 {
+    background-color: #a855f7 !important;
+  }
+
+  .text-purple-600 {
+    color: #9333ea !important;
+  }
+
+  /* Evitar saltos de página dentro de elementos */
+  .card,
+  .metric-card,
+  .chart-container {
+    page-break-inside: avoid !important;
+  }
+
+  /* Asegurar que los gráficos se vean */
+  svg,
+  canvas {
+    max-width: 100% !important;
+    height: auto !important;
+  }
+
+  /* Borders */
+  .dark .border-slate-700 {
+    border-color: #334155 !important;
+  }
+
+  .dark .border-slate-600 {
+    border-color: #475569 !important;
+  }
+
+  .border-slate-200 {
+    border-color: #e2e8f0 !important;
+  }
+
+  /* Asegurar que el contenido principal sea visible */
+  main {
+    display: block !important;
+    width: 100% !important;
+  }
+}
