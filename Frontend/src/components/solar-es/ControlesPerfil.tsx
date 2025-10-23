@@ -44,6 +44,12 @@ export function ControlesPerfil({ darkMode, dataLoaded = false }: ControlesPerfi
     }
   }, [dataLoaded, datesInitialized, selectedYear, selectedMonth, fetchProfile]);
 
+  // Actualizar temporada automáticamente cuando cambia el mes seleccionado
+  useEffect(() => {
+    const nuevaTemporada = determinarTemporada(selectedMonth);
+    setTemporada(nuevaTemporada);
+  }, [selectedMonth]);
+
   const diurno = profileData?.diurnal_percentage || 0;
   const nocturno = profileData?.nocturnal_percentage || 0;
 
@@ -75,6 +81,26 @@ export function ControlesPerfil({ darkMode, dataLoaded = false }: ControlesPerfi
     { value: 11, label: "Noviembre" },
     { value: 12, label: "Diciembre" },
   ], []);
+
+  // Determina la temporada según el mes seleccionado (basado en clima colombiano)
+  const determinarTemporada = (mes: number): "seca" | "lluviosa" | "transicion" => {
+    // Primera temporada lluviosa: Marzo, Abril, Mayo
+    if ([3, 4, 5].includes(mes)) return "lluviosa";
+
+    // Segunda temporada lluviosa: Septiembre, Octubre, Noviembre
+    if ([9, 10, 11].includes(mes)) return "lluviosa";
+
+    // Primera temporada seca: Diciembre, Enero, Febrero
+    if ([12, 1, 2].includes(mes)) return "seca";
+
+    // Segunda temporada seca: Julio, Agosto
+    if ([7, 8].includes(mes)) return "seca";
+
+    // Transición: Junio (entre primera temporada lluviosa y segunda seca)
+    if (mes === 6) return "transicion";
+
+    return "transicion"; // Por defecto
+  };
 
   return (
     <Card className={`p-6 ${darkMode ? "bg-slate-800 border-slate-700" : "bg-white"}`}>
@@ -179,11 +205,16 @@ export function ControlesPerfil({ darkMode, dataLoaded = false }: ControlesPerfi
         <div>
           <Label htmlFor="temporada" className={darkMode ? "text-slate-200" : ""}>
             Escenario Estacional
+            <span className={`text-xs ml-2 ${darkMode ? "text-slate-400" : "text-slate-500"}`}>
+              (Detectado automáticamente)
+            </span>
           </Label>
-          <Select key={`temporada-${temporada}`} value={temporada} onValueChange={setTemporada}>
+          <Select key={`temporada-${temporada}`} value={temporada} disabled={true}>
             <SelectTrigger
               id="temporada"
-              className={`mt-2 ${darkMode ? "bg-slate-700 border-slate-600 text-white" : ""}`}
+              className={`mt-2 cursor-not-allowed opacity-90 ${
+                darkMode ? "bg-slate-700 border-slate-600 text-white" : "bg-slate-100"
+              }`}
             >
               <SelectValue />
             </SelectTrigger>
@@ -208,6 +239,9 @@ export function ControlesPerfil({ darkMode, dataLoaded = false }: ControlesPerfi
               </SelectItem>
             </SelectContent>
           </Select>
+          <p className={`text-xs mt-2 ${darkMode ? "text-slate-400" : "text-slate-500"}`}>
+            ℹ️ La temporada se actualiza automáticamente según el mes seleccionado
+          </p>
         </div>
 
         {/* Resumen de Configuración */}
